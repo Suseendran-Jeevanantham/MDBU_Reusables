@@ -1,0 +1,13 @@
+{
+	"name": "CustomProject",
+	"private": "true",
+	"author": "GUI Composer",
+	"dependencies": {
+		"webcomponentsjs": "Polymer/webcomponentsjs",
+		"ti-widget-statusbar": "git@bitbucket.itg.ti.com/gc/ti-guicomposer-components.git"
+	},
+	"componentfolders": {
+		"ti-widget-statusbar": "ti-widget-statusbar"
+	},
+	"version": "0.0.1"
+}

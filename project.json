@@ -10,5 +10,8 @@
     "disableAutoConnect": false,
     "vendorName": "",
     "technologyName": "",
-    "nosplash": true
+    "nosplash": true,
+    "window": {
+        "frame": true
+    }
 }

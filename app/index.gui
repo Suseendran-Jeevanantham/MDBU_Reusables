@@ -1,0 +1,51 @@
+<link rel="import" href="../ti-widget-readme/ti-widget-readme.html">
+<link rel="import" href="../ti-core-stylesheets/ti-core-stylesheets.html">
+<link rel="import" href="../ti-widget-readme/ti-widget-readme.html">
+<link rel="import" href="../ti-widget-common/ti-widget-container.html">
+<link rel="import" href="../ti-widget-common/ti-widget-label.html">
+<link rel="import" href="../ti-widget-menubar/ti-widget-menubar.html">
+<link rel="import" href="../ti-widget-menubar/ti-widget-filemenu.html">
+<link rel="import" href="../ti-widget-menubar/ti-widget-editmenu.html">
+<link rel="import" href="../ti-widget-menubar/ti-widget-helpmenu.html">
+<link rel="import" href="../ti-widget-statusbar/ti-widget-statusbar.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+
+<dom-module name="my-element">
+
+<template>
+    <style is="custom-style">
+	  #ti_widget_menubar {
+	  	top: 0px;
+	  	width: 100%;
+	  	margin: 0px;
+		position: absolute;
+	 }
+	  html .viewport {
+	  	position: absolute;
+		left: 0px;
+		right: 0px;
+		bottom: 28px;
+		top: 41px;
+		border: none;
+	  }
+    </style>
+    <ti-widget-readme id="readmeViewer" pin class="_TI_"></ti-widget-readme>
+    <ti-core-stylesheets  id="ti_core_stylesheets" class="_TI_"></ti-core-stylesheets>
+    <ti-widget-menubar  id="ti_widget_menubar" layout class="_TI_" product-name="Application" layout horizontal pin>
+      <ti-widget-filemenu id="ti_widget_filemenu" layout class="_TI_" layout></ti-widget-filemenu>
+      <ti-widget-editmenu id="ti_widget_editmenu" layout class="_TI_" layout></ti-widget-editmenu>
+      <ti-widget-helpmenu id="ti_widget_helpmenu" layout class="_TI_" layout></ti-widget-helpmenu>
+    </ti-widget-menubar>
+
+      <ti-widget-container auto-scroll id="viewport" pin class="_TI_ viewport"></ti-widget-container>
+      <ti-widget-statusbar class="_TI_"></ti-widget-statusbar>
+
+  </template>
+
+  <script>
+
+    Polymer({
+        is: 'my-element'
+	});
+</script>
+</dom-module>

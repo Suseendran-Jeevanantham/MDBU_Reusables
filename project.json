@@ -1,0 +1,14 @@
+{
+    "template": "Application",
+    "description": "Basic application with a menu bar and status bar",
+    "version": "1.0.14",
+    "projectName": "CustomProject",
+    "applicationName": "CustomProject",
+    "applicationIcon": "",
+    "splashImage": "",
+    "tiBrandingEnabled": true,
+    "disableAutoConnect": false,
+    "vendorName": "",
+    "technologyName": "",
+    "nosplash": true
+}

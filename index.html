@@ -72,8 +72,8 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <link rel="import" href="components/ti-widget-common/ti-widget-vtabcontainer.html">
 <link rel="import" href="components/ti-widget-common/ti-widget-vtab.html">
 <link rel="import" href="components/ti-widget-statusbar/ti-widget-statusbar.html">
-<link rel="import" href="app/custom/ti-mdbu-numbox/ti-mdbu-numbox.html">
 <link rel="import" href="app/custom/ti-mdbu-textbox/ti-mdbu-textbox.html">
+<link rel="import" href="app/custom/ti-mdbu-numbox/ti-mdbu-numbox.html">
 
  
   <template id="template_obj" is="dom-bind">
@@ -121,24 +121,19 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     top: -199px;
     position: absolute;
   }
-  #ti_mdbu_numbox {
-    left: 199px;
-    top: 79px;
+  #ti_mdbu_textbox {
+    left: 359px;
+    top: 369px;
     position: absolute;
   }
   #ti_mdbu_textbox1 {
-    left: 189px;
-    top: 69px;
+    left: 639px;
+    top: 369px;
     position: absolute;
   }
-  #ti_mdbu_numbox1 {
-    left: 329px;
-    top: 329px;
-    position: absolute;
-  }
-  #ti_mdbu_textbox {
-    left: 619px;
-    top: 319px;
+  #ti_mdbu_numbox {
+    left: 529px;
+    top: 489px;
     position: absolute;
   }
 </style>
@@ -161,10 +156,9 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <ti-widget-statusbar app-icon-style="color: white;display:inline-block;" icon-name="ti-core-icons:nolink" class="_TI_ x-scope ti-widget-statusbar-0"></ti-widget-statusbar>
 
 <ti-widget-vtab name="one" icon="settings" icon-style="width:30px;height:30px;padding:5px;" visible font-size="inherit" font-style="normal" font-weight="normal" text-align="left" text-decoration="none" id="ti_widget_vtab" class="_TI_" title>
-    <ti-mdbu-numbox label="NumberBox" min="0" max="10" value="0" id="ti_mdbu_numbox" class="_TI_"></ti-mdbu-numbox>
-    <ti-mdbu-textbox label="TextBox" min="0" max="15" value="0" ishex id="ti_mdbu_textbox1" class="_TI_"></ti-mdbu-textbox>
-    <ti-mdbu-numbox label="NumberBox" min="0" max="10" value="0" id="ti_mdbu_numbox1" class="_TI_"></ti-mdbu-numbox>
-    <ti-mdbu-textbox label="TextBox" min="0" max="15" value="0" ishex id="ti_mdbu_textbox" class="_TI_"></ti-mdbu-textbox>
+    <ti-mdbu-textbox label="TextBox" min="0" max="15" value="14" ishex id="ti_mdbu_textbox" class="_TI_"></ti-mdbu-textbox>
+    <ti-mdbu-textbox label="TextBox" min="0" max="15" value="Welcome" id="ti_mdbu_textbox1" class="_TI_"></ti-mdbu-textbox>
+    <ti-mdbu-numbox label="NumberBox" min="0" max="10" value="9" id="ti_mdbu_numbox" class="_TI_"></ti-mdbu-numbox>
 </ti-widget-vtab>
 
 </template>

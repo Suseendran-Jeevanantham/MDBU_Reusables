@@ -18,7 +18,7 @@
 				},
 				ishex: {
 					type: Boolean,
-					value: true
+					value: false
 				},
 				value: {
 					type: String,
@@ -58,6 +58,7 @@
 					}
 					if (!isNaN(value) && (value >= this.min) && (value <= this.max)) {
 						this.cached = this.value = value + '';
+						this.dispValue = this.convertDecimalToHex(parseInt(this.value));
 					}
 					else {
 						this.dispValue = this.convertDecimalToHex(parseInt(this.cached));
@@ -74,6 +75,13 @@
 			},
 			created: function(){
 				console.log("Textbox is created");
+			},
+			ready: function() {
+				if(this.ishex) {
+					this.dispValue = this.convertDecimalToHex(parseInt(this.value));
+				} else {
+					this.dispValue = this.value;
+				}
 			}		
 		})
 	</script>

@@ -1,0 +1,59 @@
+<dom-module id="ti-mdbu-numbox">
+	<link rel="import" type="css" href="ti-mdbu-numbox.css">
+	<template>
+		<div class="ctrl-hdr">
+			{{label}}
+		</div>
+		<div class="ctrl-cnt">
+			<input type="number" class="numbox" value="{{value::input}}">
+		</div>
+	</template>
+	<script>
+		Polymer({
+			is: 'ti-mdbu-numbox',
+			properties: {
+				label: {
+					type: String,
+					value: 'NumberBox'
+				},
+				cached: {
+					type: Number,
+					value: 0
+				},
+				min: {
+					type: Number,
+					value: 0
+				},
+				max: {
+					type: Number,
+					value: 10
+				},
+				value: {
+					type: Number,
+					value: 0,
+					observer: '_calculateValue'
+				}
+			},
+			changeValue: function(newValue, oldValue) {
+				if(this.value == this.cached) {
+					return;
+				}
+				if (this.value != '' && (this.value >= this.min) && (this.value <= this.max)) {
+					this.cached = this.value;
+				}
+				else {
+					this.value = oldValue;
+				}
+			},
+			_calculateValue: function(newValue, oldValue) {
+				this.cancelDebouncer('change');
+				this.debounce('change', function() {
+					this.changeValue(newValue, oldValue);
+				}, 750);
+			},
+			created: function(){
+				console.log("Numberbox is created");
+			}		
+		})
+	</script>
+</dom-module>

@@ -16,11 +16,6 @@
 					type: String,
 					value: 'TextBox'
 				},
-				dispValue: {
-					type: String,
-					value: '0x00',
-					observer: '_calculateValue'
-				},
 				ishex: {
 					type: Boolean,
 					value: true
@@ -34,10 +29,17 @@
 					value: '0'
 				},
 				min: {
-					type: Number
+					type: Number,
+					value: 0
 				},
 				max: {
-					type: Number
+					type: Number,
+					value: 15
+				},
+				dispValue: {
+					type: String,
+					value: '0x00',
+					observer: '_calculateValue'
 				}
 			},
 			convertHexToDecimal: function(hex) {
@@ -46,23 +48,29 @@
 			convertDecimalToHex: function(dec) {
         return '0x' + dec.toString(16);
       },
-			_calculateValue: function(newDispValue, oldDispValue) {
+			changeValue: function(newDispValue, oldDispValue) {
 				var value;
 				if(this.ishex) {
 					value = this.convertHexToDecimal(newDispValue);
 					if (value == this.cached) {
-						this.dispValue = this.convertDecimalToHex(value);
+						this.dispValue = this.convertDecimalToHex(parseInt(value));
 						return;
 					}
 					if (!isNaN(value) && (value >= this.min) && (value <= this.max)) {
 						this.cached = this.value = value + '';
 					}
 					else {
-						this.dispValue = oldDispValue;
+						this.dispValue = this.convertDecimalToHex(parseInt(this.cached));
 					}
 				} else {
 					this.value = this.cached = newDispValue;
 				}
+			},
+			_calculateValue: function(newDispValue, oldDispValue) {
+				this.cancelDebouncer('change');
+				this.debounce('change', function() {
+					this.changeValue(newDispValue, oldDispValue);
+				}, 750);
 			},
 			created: function(){
 				console.log("Textbox is created");

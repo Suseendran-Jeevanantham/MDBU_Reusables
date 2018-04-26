@@ -69,6 +69,9 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <link rel="import" href="components/ti-widget-menubar/ti-widget-editmenu.html">
 <link rel="import" href="components/ti-widget-menubar/ti-widget-helpmenu.html">
 <link rel="import" href="components/ti-widget-common/ti-widget-container.html">
+<link rel="import" href="components/ti-widget-common/ti-widget-vtabcontainer.html">
+<link rel="import" href="components/ti-widget-common/ti-widget-vtab.html">
+<link rel="import" href="app/custom/ti-mdbu-textbox/ti-mdbu-textbox.html">
 <link rel="import" href="components/ti-widget-statusbar/ti-widget-statusbar.html">
 
  
@@ -89,6 +92,36 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     top: 41px;
     border: none;
   }
+  #viewport {
+    text-align: left;
+    text-decoration: none;
+    font-weight: normal;
+    font-style: normal;
+    font-size: inherit;
+    overflow: auto;
+  }
+  #ti_widget_vtabcontainer {
+    width: 100%;
+    height: 100%;
+    border: 1px solid lightgrey;
+    left: 0px;
+    top: -1px;
+    position: absolute;
+  }
+  #ti_widget_vtab {
+    background-color: white;
+    text-align: left;
+    text-decoration: none;
+    font-weight: normal;
+    font-style: normal;
+    font-size: inherit;
+    overflow: initial;
+  }
+  #ti_mdbu_textbox {
+    left: 119px;
+    top: 59px;
+    position: absolute;
+  }
 </style>
 
 <ti-widget-readme background-color="#ffffff" elevation="5" title-text="README.md" id="readmeViewer" pin class="_TI_"></ti-widget-readme>
@@ -99,7 +132,15 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <ti-widget-editmenu id="ti_widget_editmenu" layout class="_TI_"></ti-widget-editmenu>
     <ti-widget-helpmenu id="ti_widget_helpmenu" layout class="_TI_"></ti-widget-helpmenu>
 </ti-widget-menubar>
-<ti-widget-container font-size="inherit" auto-scroll font-style="normal" font-weight="normal" text-align="left" text-decoration="none" visible id="viewport" pin class="_TI_ viewport" title></ti-widget-container>
+
+<ti-widget-container font-size="inherit" auto-scroll font-style="normal" font-weight="normal" text-align="left" text-decoration="none" visible id="viewport" pin class="_TI_ viewport" title>
+    <ti-widget-vtabcontainer vtab-height-in-px="-1" selected-index="0" ink-color="#f1f1f1" color-selected="#000" color-unselected="#888" color-disabled="#ccc" color-selection-bar="#fff" background-color-selected="#e0f8f8" background-color-hover="#dcdcec" auto-expand id="ti_widget_vtabcontainer" layout class="_TI_ x-scope ti-widget-vtabcontainer-0">
+        <ti-widget-vtab name="one" icon="settings" icon-style="width:30px;height:30px;padding:5px;" visible font-size="inherit" font-style="normal" font-weight="normal" text-align="left" text-decoration="none" id="ti_widget_vtab" class="_TI_ iron-selected" title>
+            <ti-mdbu-textbox id="ti_mdbu_textbox" label="TextBox" min="0" max="8" ishex class="_TI_ selected-element"></ti-mdbu-textbox>
+        </ti-widget-vtab>
+        <ti-widget-vtab name="two" icon="build" icon-style="width:30px;height:30px;padding:5px;" visible font-size="inherit" font-style="normal" font-weight="normal" text-align="left" text-decoration="none" class="_TI_" title></ti-widget-vtab>
+    </ti-widget-vtabcontainer>
+</ti-widget-container>
 
 <ti-widget-statusbar app-icon-style="color: white;display:inline-block;" icon-name="ti-core-icons:nolink" class="_TI_ x-scope ti-widget-statusbar-0"></ti-widget-statusbar>
 

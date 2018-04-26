@@ -1,0 +1,72 @@
+<dom-module id="ti-mdbu-textbox">
+	<link rel="import" type="css" href="ti-mdbu-textbox.css">
+	<template>
+		<div class="ctrl-hdr">
+			{{label}}
+		</div>
+		<div class="ctrl-cnt">
+			<input type="text" class="numbox" value="{{dispValue::input}}">
+		</div>
+	</template>
+	<script>
+		Polymer({
+			is: 'ti-mdbu-textbox',
+			properties: {
+				label: {
+					type: String,
+					value: 'TextBox'
+				},
+				dispValue: {
+					type: String,
+					value: '0x00',
+					observer: '_calculateValue'
+				},
+				ishex: {
+					type: Boolean,
+					value: true
+				},
+				value: {
+					type: String,
+					value: '0'
+				},
+				cached: {
+					type: String,
+					value: '0'
+				},
+				min: {
+					type: Number
+				},
+				max: {
+					type: Number
+				}
+			},
+			convertHexToDecimal: function(hex) {
+        return parseInt(hex, 16);
+      },
+			convertDecimalToHex: function(dec) {
+        return '0x' + dec.toString(16);
+      },
+			_calculateValue: function(newDispValue, oldDispValue) {
+				var value;
+				if(this.ishex) {
+					value = this.convertHexToDecimal(newDispValue);
+					if (value == this.cached) {
+						this.dispValue = this.convertDecimalToHex(value);
+						return;
+					}
+					if (!isNaN(value) && (value >= this.min) && (value <= this.max)) {
+						this.cached = this.value = value + '';
+					}
+					else {
+						this.dispValue = oldDispValue;
+					}
+				} else {
+					this.value = this.cached = newDispValue;
+				}
+			},
+			created: function(){
+				console.log("Textbox is created");
+			}		
+		})
+	</script>
+</dom-module>

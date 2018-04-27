@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  left: 0 !important;
+  right: 0 !important;
+  position: relative !important;
+  top: 0 !important;
+}
+.ctrl-hdr {
+  color: #98999B;
+  font-family: "Roboto-Medium";
+  font-size: 14px;
+  padding: 10px 0px;
+  width: 200px;
+}
+.ctrl-cnt {
+  align-items: center;
+  display: flex;
+  color: #63666A;
+  width: 200px;
+}
+select {
+  background-color: transparent;
+  border: none;
+  border: 1px solid #e6e6e6;
+  color: #000;
+  cursor: pointer;
+  font-family: Roboto-Medium;
+  height: 33px;
+  max-width: 177px;
+  outline: none;
+  padding-left: 10px;
+  width: 177px;
+}

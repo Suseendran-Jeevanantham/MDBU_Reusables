@@ -1,0 +1,48 @@
+<dom-module id="ti-mdbu-select">
+	<link rel="import" type="css" href="ti-mdbu-select.css">
+	<template>
+		<div class="ctrl-hdr">
+			{{label}}
+		</div>
+		<div class="ctrl-cnt">
+			<select id="select">
+			</select>
+		</div>
+	</template>
+	<script>
+		Polymer({
+			is: 'ti-mdbu-select',
+			properties: {
+				name: {
+					type: String,
+					value: 'select'
+				},
+				label: {
+					type: String,
+					value: 'Select'
+				},
+				items: {
+					type: String,
+					value: ''
+				},
+				selectedIndex: {
+					type: Number,
+					value: 0
+				}
+			},
+			created: function(){
+				console.log("select is created");
+			},
+			ready: function() {
+				var options = this.items.split('|');
+				var selectElement = this.$.select;
+				for(var index in options) {
+					var option = document.createElement("option");
+					option.text = options[index];
+					selectElement.add(option);
+				}
+				selectElement.selectedIndex = this.selectedIndex;
+			}
+		})
+	</script>
+</dom-module>

@@ -1,0 +1,20 @@
+<dom-module id="ti-mdbu-highlevel-hdr">
+	<link rel="import" type="css" href="ti-mdbu-highlevel-hdr.css">
+	<template>
+		{{label}}
+	</template>
+	<script>
+		Polymer({
+			is: 'ti-mdbu-highlevel-hdr',
+			properties: {
+				label: {
+					type: String,
+					value: ""
+				}
+			},
+			created: function(){
+				console.log("highlevel Header is created");
+			}		
+		})
+	</script>
+</dom-module>

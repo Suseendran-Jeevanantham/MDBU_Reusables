@@ -1,0 +1,11 @@
+:host {
+  background-color: #fff;
+  display: block;
+  height: calc(100% - 70px);
+  left: 0 !important;
+  overflow-x: hidden;
+  right: 0 !important;
+  position: relative !important;
+  top: 0 !important;
+  width: 100%;
+}

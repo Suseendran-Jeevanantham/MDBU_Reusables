@@ -69,11 +69,11 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <link rel="import" href="components/ti-widget-menubar/ti-widget-editmenu.html">
 <link rel="import" href="components/ti-widget-menubar/ti-widget-helpmenu.html">
 <link rel="import" href="components/ti-widget-common/ti-widget-container.html">
-<link rel="import" href="components/ti-widget-common/ti-widget-vtabcontainer.html">
-<link rel="import" href="components/ti-widget-common/ti-widget-vtab.html">
-<link rel="import" href="components/ti-widget-statusbar/ti-widget-statusbar.html">
-<link rel="import" href="app/custom/ti-mdbu-textbox/ti-mdbu-textbox.html">
+<link rel="import" href="app/custom/ti-mdbu-highlevel/ti-mdbu-highlevel.html">
+<link rel="import" href="app/custom/ti-mdbu-accordion/ti-mdbu-accordion.html">
 <link rel="import" href="app/custom/ti-mdbu-numbox/ti-mdbu-numbox.html">
+<link rel="import" href="app/custom/ti-mdbu-textbox/ti-mdbu-textbox.html">
+<link rel="import" href="components/ti-widget-statusbar/ti-widget-statusbar.html">
 
  
   <template id="template_obj" is="dom-bind">
@@ -101,34 +101,27 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     font-size: inherit;
     overflow: auto;
   }
-  #ti_widget_vtabcontainer {
-    width: 100%;
-    height: 100%;
-    border: 1px solid lightgrey;
+  #ti_widget_statusbar {
+    position: static;
+  }
+  #ti_mdbu_highlevel {
     left: 0px;
-    top: -1px;
+    top: -41px;
     position: absolute;
   }
-  #ti_widget_vtab {
-    background-color: white;
-    text-align: left;
-    text-decoration: none;
-    font-weight: normal;
-    font-style: normal;
-    font-size: inherit;
-    overflow: initial;
-    left: -119px;
-    top: -199px;
-    position: absolute;
-  }
-  #ti_mdbu_textbox {
-    left: 409px;
-    top: 369px;
+  #ti_mdbu_accordion {
+    left: 0px;
+    top: -41px;
     position: absolute;
   }
   #ti_mdbu_numbox {
-    left: 699px;
-    top: 369px;
+    left: 0px;
+    top: -41px;
+    position: absolute;
+  }
+  #ti_mdbu_textbox {
+    left: 0px;
+    top: -41px;
     position: absolute;
   }
 </style>
@@ -143,17 +136,15 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </ti-widget-menubar>
 
 <ti-widget-container font-size="inherit" auto-scroll font-style="normal" font-weight="normal" text-align="left" text-decoration="none" visible id="viewport" pin class="_TI_ viewport" title>
-    <ti-widget-vtabcontainer vtab-height-in-px="-1" selected-index="0" ink-color="#f1f1f1" color-selected="#000" color-unselected="#888" color-disabled="#ccc" color-selection-bar="#fff" background-color-selected="#e0f8f8" background-color-hover="#dcdcec" auto-expand id="ti_widget_vtabcontainer" layout class="_TI_ x-scope ti-widget-vtabcontainer-0">
-        <ti-widget-vtab name="two" icon="build" icon-style="width:30px;height:30px;padding:5px;" visible font-size="inherit" font-style="normal" font-weight="normal" text-align="left" text-decoration="none" class="_TI_ iron-selected" title></ti-widget-vtab>
-    </ti-widget-vtabcontainer>
+    <ti-mdbu-highlevel name="highlevel" label="HighLevel" id="ti_mdbu_highlevel" class="_TI_">
+        <ti-mdbu-accordion id="ti_mdbu_accordion" name="numberBox" label="NumberBox" class="_TI_">
+            <ti-mdbu-numbox id="ti_mdbu_numbox" name="numberBox" label="NumberBox" min="0" max="10" value="0" class="_TI_"></ti-mdbu-numbox>
+            <ti-mdbu-textbox id="ti_mdbu_textbox" name="textBox" label="TextBox" min="0" max="15" value="0" ishex class="_TI_ selected-element"></ti-mdbu-textbox>
+        </ti-mdbu-accordion>
+    </ti-mdbu-highlevel>
 </ti-widget-container>
 
-<ti-widget-statusbar app-icon-style="color: white;display:inline-block;" icon-name="ti-core-icons:nolink" class="_TI_ x-scope ti-widget-statusbar-0"></ti-widget-statusbar>
-
-<ti-widget-vtab id="ti_widget_vtab" name="one" icon="settings" icon-style="width:30px;height:30px;padding:5px;" visible font-size="inherit" font-style="normal" font-weight="normal" text-align="left" text-decoration="none" class="_TI_" title>
-    <ti-mdbu-textbox id="ti_mdbu_textbox" name="textBox" label="TextBox" min="0" max="15" value="10" ishex class="_TI_"></ti-mdbu-textbox>
-    <ti-mdbu-numbox id="ti_mdbu_numbox" name="numberBox" label="NumberBox" min="0" max="10" value="5" class="_TI_ selected-element"></ti-mdbu-numbox>
-</ti-widget-vtab>
+<ti-widget-statusbar app-icon-style="color: white;display:inline-block;" icon-name="ti-core-icons:nolink" id="ti_widget_statusbar" class="_TI_ x-scope ti-widget-statusbar-0"></ti-widget-statusbar>
 
 </template>
  

@@ -1,0 +1,30 @@
+<dom-module id="ti-mdbu-accordion">
+	<link rel="import" type="css" href="ti-mdbu-accordion.css">
+	<template>
+		<div class="acc-hdr">
+			<div>{{label}}</div>
+			</div>
+		</div>
+		<div class="acc-bdy al-it-ctr pad-10-25">
+			<content></content>
+		</div>
+	</template>
+	<script>
+		Polymer({
+			is: 'ti-mdbu-accordion',
+			properties: {
+				name: {
+					type: String,
+					value: 'numberBox'
+				},
+				label: {
+					type: String,
+					value: 'NumberBox'
+				}
+			},
+			created: function(){
+				console.log("Accordion is created");
+			}		
+		})
+	</script>
+</dom-module>

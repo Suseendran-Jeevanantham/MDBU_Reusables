@@ -1,3 +1,10 @@
+:host {
+  display: block;
+  left: 0 !important;
+  right: 0 !important;
+  position: relative !important;
+  top: 0 !important;
+}
 .ctrl-hdr {
   color: #98999B;
   font-family: "Roboto-Medium";

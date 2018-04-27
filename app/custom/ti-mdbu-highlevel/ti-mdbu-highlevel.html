@@ -1,0 +1,24 @@
+<dom-module id="ti-mdbu-highlevel">
+	<link rel="import" type="css" href="ti-mdbu-highlevel.css">
+	<template>
+		<content></content>
+	</template>
+	<script>
+		Polymer({
+			is: 'ti-mdbu-highlevel',
+			properties: {
+				name: {
+					type: String,
+					value: 'highlevel'
+				},
+				label: {
+					type: String,
+					value: 'HighLevel'
+				}
+			},
+			created: function(){
+				console.log("highlevel is created");
+			}		
+		})
+	</script>
+</dom-module>

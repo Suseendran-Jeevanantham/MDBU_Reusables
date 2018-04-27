@@ -1,0 +1,35 @@
+:host {
+  background-color: #fff;
+  display: block;
+  left: 0 !important;
+  right: 0 !important;
+  position: relative !important;
+  top: 0 !important;
+  width: 100%;
+}
+.acc-hdr {
+  align-items: center;
+  background-color: rgba(196,196,196,0.1);
+  color: #98999B;
+  cursor: pointer;
+  display: flex;
+  font-family: 'Roboto-Light';
+  font-size: 16px;
+  justify-content: space-between;
+  height: 49px;
+  padding: 0px 25px;  
+}
+.acc-bdy {
+  border-bottom: 1px solid rgba(196,196,196,0.1);
+  display: flex;
+  flex-wrap: wrap;
+}
+.acc-bdy.pad-0-25 {
+  padding: 0px 25px;
+}
+.acc-bdy.pad-10-25 {
+  padding: 10px 25px;
+}
+.al-it-ctr {
+  align-items: center;
+}

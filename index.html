@@ -122,18 +122,13 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     position: absolute;
   }
   #ti_mdbu_textbox {
-    left: 359px;
-    top: 369px;
-    position: absolute;
-  }
-  #ti_mdbu_textbox1 {
-    left: 639px;
+    left: 409px;
     top: 369px;
     position: absolute;
   }
   #ti_mdbu_numbox {
-    left: 529px;
-    top: 489px;
+    left: 699px;
+    top: 369px;
     position: absolute;
   }
 </style>
@@ -155,10 +150,9 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <ti-widget-statusbar app-icon-style="color: white;display:inline-block;" icon-name="ti-core-icons:nolink" class="_TI_ x-scope ti-widget-statusbar-0"></ti-widget-statusbar>
 
-<ti-widget-vtab name="one" icon="settings" icon-style="width:30px;height:30px;padding:5px;" visible font-size="inherit" font-style="normal" font-weight="normal" text-align="left" text-decoration="none" id="ti_widget_vtab" class="_TI_" title>
-    <ti-mdbu-textbox label="TextBox" min="0" max="15" value="14" ishex id="ti_mdbu_textbox" class="_TI_"></ti-mdbu-textbox>
-    <ti-mdbu-textbox label="TextBox" min="0" max="15" value="Welcome" id="ti_mdbu_textbox1" class="_TI_"></ti-mdbu-textbox>
-    <ti-mdbu-numbox label="NumberBox" min="0" max="10" value="9" id="ti_mdbu_numbox" class="_TI_"></ti-mdbu-numbox>
+<ti-widget-vtab id="ti_widget_vtab" name="one" icon="settings" icon-style="width:30px;height:30px;padding:5px;" visible font-size="inherit" font-style="normal" font-weight="normal" text-align="left" text-decoration="none" class="_TI_" title>
+    <ti-mdbu-textbox id="ti_mdbu_textbox" name="textBox" label="TextBox" min="0" max="15" value="10" ishex class="_TI_"></ti-mdbu-textbox>
+    <ti-mdbu-numbox id="ti_mdbu_numbox" name="numberBox" label="NumberBox" min="0" max="10" value="5" class="_TI_ selected-element"></ti-mdbu-numbox>
 </ti-widget-vtab>
 
 </template>

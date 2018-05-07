@@ -74,9 +74,8 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <link rel="import" href="app/custom/ti-mdbu-highlevel-body/ti-mdbu-highlevel-body.html">
 <link rel="import" href="app/custom/ti-mdbu-highlevel-left/ti-mdbu-highlevel-left.html">
 <link rel="import" href="app/custom/ti-mdbu-accordion/ti-mdbu-accordion.html">
-<link rel="import" href="app/custom/ti-mdbu-textbox/ti-mdbu-textbox.html">
 <link rel="import" href="app/custom/ti-mdbu-numbox/ti-mdbu-numbox.html">
-<link rel="import" href="app/custom/ti-mdbu-select/ti-mdbu-select.html">
+<link rel="import" href="app/custom/ti-mdbu-textbox/ti-mdbu-textbox.html">
 <link rel="import" href="app/custom/ti-mdbu-highlevel-right/ti-mdbu-highlevel-right.html">
 <link rel="import" href="components/ti-widget-statusbar/ti-widget-statusbar.html">
 
@@ -114,47 +113,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     top: -41px;
     position: absolute;
   }
-  #ti_mdbu_highlevel_left {
-    left: 0px;
-    top: -41px;
-    position: absolute;
-  }
-  #ti_mdbu_highlevel_right {
-    left: 820px;
-    top: 349px;
-    position: absolute;
-  }
-  #ti_mdbu_accordion {
-    left: 0px;
-    top: -41px;
-    position: absolute;
-  }
-  #ti_mdbu_textbox {
-    left: 0px;
-    top: -41px;
-    position: absolute;
-  }
-  #ti_mdbu_numbox {
-    left: 0px;
-    top: -41px;
-    position: absolute;
-  }
-  #ti_mdbu_textbox1 {
-    left: 0px;
-    top: -41px;
-    position: absolute;
-  }
-  #ti_mdbu_textbox2 {
-    left: 0px;
-    top: -41px;
-    position: absolute;
-  }
-  #ti_mdbu_textbox3 {
-    left: 0px;
-    top: -41px;
-    position: absolute;
-  }
-  #ti_mdbu_textbox4 {
+  #ti_mdbu_highlevel_hdr {
     left: 0px;
     top: -41px;
     position: absolute;
@@ -164,12 +123,27 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     top: -41px;
     position: absolute;
   }
-  #ti_mdbu_highlevel_hdr {
+  #ti_mdbu_highlevel_left {
     left: 0px;
     top: -41px;
     position: absolute;
   }
-  #ti_mdbu_select {
+  #ti_mdbu_highlevel_right {
+    left: 0px;
+    top: -41px;
+    position: absolute;
+  }
+  #ti_mdbu_numbox {
+    left: 0px;
+    top: -41px;
+    position: absolute;
+  }
+  #ti_mdbu_textbox {
+    left: 0px;
+    top: -41px;
+    position: absolute;
+  }
+  #ti_mdbu_accordion {
     left: 0px;
     top: -41px;
     position: absolute;
@@ -186,21 +160,16 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </ti-widget-menubar>
 
 <ti-widget-container font-size="inherit" auto-scroll font-style="normal" font-weight="normal" text-align="left" text-decoration="none" visible id="viewport" pin class="_TI_ viewport" title>
-    <ti-mdbu-highlevel id="ti_mdbu_highlevel" name="highlevel" label="HighLevel" class="_TI_">
+    <ti-mdbu-highlevel id="ti_mdbu_highlevel" class="_TI_">
         <ti-mdbu-highlevel-hdr label="Page Header" id="ti_mdbu_highlevel_hdr" class="_TI_"></ti-mdbu-highlevel-hdr>
         <ti-mdbu-highlevel-body id="ti_mdbu_highlevel_body" class="_TI_">
             <ti-mdbu-highlevel-left id="ti_mdbu_highlevel_left" class="_TI_">
                 <ti-mdbu-accordion name="numberBox" label="NumberBox" id="ti_mdbu_accordion" class="_TI_">
-                    <ti-mdbu-textbox name="textBox" label="TextBox" min="0" max="15" value="0" id="ti_mdbu_textbox" class="_TI_"></ti-mdbu-textbox>
                     <ti-mdbu-numbox name="numberBox" label="NumberBox" min="0" max="10" value="0" id="ti_mdbu_numbox" class="_TI_"></ti-mdbu-numbox>
-                    <ti-mdbu-textbox name="textBox" label="TextBox" min="0" max="15" value="0" id="ti_mdbu_textbox1" class="_TI_"></ti-mdbu-textbox>
-                    <ti-mdbu-textbox name="textBox" label="TextBox" min="0" max="15" value="0" id="ti_mdbu_textbox2" class="_TI_"></ti-mdbu-textbox>
-                    <ti-mdbu-textbox name="textBox" label="TextBox" min="0" max="15" value="0" id="ti_mdbu_textbox3" class="_TI_"></ti-mdbu-textbox>
-                    <ti-mdbu-textbox name="textBox" label="TextBox" min="0" max="15" value="0" id="ti_mdbu_textbox4" class="_TI_"></ti-mdbu-textbox>
-                    <ti-mdbu-select name="select" label="Select" items="item 1|item 2|item 3" selected-index="1" id="ti_mdbu_select" class="_TI_"></ti-mdbu-select>
+                    <ti-mdbu-textbox name="textBox" label="TextBox" min="0" max="15" value="0" id="ti_mdbu_textbox" class="_TI_"></ti-mdbu-textbox>
                 </ti-mdbu-accordion>
             </ti-mdbu-highlevel-left>
-            <ti-mdbu-highlevel-right id="ti_mdbu_highlevel_right" class="_TI_ selected-element"></ti-mdbu-highlevel-right>
+            <ti-mdbu-highlevel-right id="ti_mdbu_highlevel_right" class="_TI_"></ti-mdbu-highlevel-right>
         </ti-mdbu-highlevel-body>
     </ti-mdbu-highlevel>
 </ti-widget-container>

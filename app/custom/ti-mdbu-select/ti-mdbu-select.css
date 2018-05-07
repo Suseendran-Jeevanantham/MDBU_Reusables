@@ -2,7 +2,7 @@
   display: block;
   left: 0 !important;
   right: 0 !important;
-  position: relative !important;
+  position: static !important;
   top: 0 !important;
 }
 .ctrl-hdr {

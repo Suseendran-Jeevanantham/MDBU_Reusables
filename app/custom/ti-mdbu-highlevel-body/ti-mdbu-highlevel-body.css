@@ -5,7 +5,7 @@
   left: 0 !important;
   overflow-x: hidden;
   right: 0 !important;
-  position: relative !important;
+  position: static !important;
   top: 0 !important;
   width: 100%;
 }

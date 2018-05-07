@@ -3,7 +3,7 @@
   float: left;
   height: 100%;
   left: 0 !important;
-  position: relative !important;
+  position: static !important;
   right: 0 !important;
   top: 0 !important;
   width: 350px;

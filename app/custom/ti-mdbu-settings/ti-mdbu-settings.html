@@ -7,6 +7,7 @@
 			<div class="page-body">
 				<div class="left-cntr">
 					<ti-mdbu-accordion id="ti_mdbu_accordion" name="numberBox" label="NumberBox" class="_TI_">
+						<ti-mdbu-select id="ti_mdbu_select" obj-value="{{motorCtrl.mode}}" class="_TI_"></ti-mdbu-select>
 						<ti-mdbu-textbox id="ti_mdbu_textbox" obj-value="{{motorCtrl.i2cAddress}}" class="_TI_"></ti-mdbu-textbox>
 						<ti-mdbu-numbox id="ti_mdbu_numbox" obj-value="{{motorCtrl.pwmSwitchingFreq}}" class="_TI_"></ti-mdbu-numbox>
 					</ti-mdbu-accordion>
@@ -48,6 +49,28 @@
 								cached: 15,
 								min: 0,
 								max: 100
+							},
+							mode: {
+								label: 'Mode',
+								name: 'mode',
+								items: [{
+										display: '4-Pin Mode',
+										value: 0
+									},
+									{
+										display: '2-Pin Mode',
+										value: 1
+									},
+									{
+										display: 'Parallel Mode',
+										value: 2
+									},
+									{
+										display: 'Independent Mode',
+										value: 3
+									}
+								],
+								selectedIndex: 1
 							}
 						}
 					}

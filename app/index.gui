@@ -5,9 +5,10 @@
 <link rel="import" href="../ti-widget-menubar/ti-widget-editmenu.html">
 <link rel="import" href="../ti-widget-menubar/ti-widget-helpmenu.html">
 <link rel="import" href="../ti-widget-common/ti-widget-container.html">
-<link rel="import" href="app/custom/ti-mdbu-settings/ti-mdbu-settings.html">
 <link rel="import" href="app/custom/ti-mdbu-accordion/ti-mdbu-accordion.html">
 <link rel="import" href="app/custom/ti-mdbu-numbox/ti-mdbu-numbox.html">
+<link rel="import" href="app/custom/ti-mdbu-select/ti-mdbu-select.html">
+<link rel="import" href="app/custom/ti-mdbu-settings/ti-mdbu-settings.html">
 <link rel="import" href="app/custom/ti-mdbu-textbox/ti-mdbu-textbox.html">
 <link rel="import" href="../ti-widget-statusbar/ti-widget-statusbar.html">
 
@@ -15,7 +16,7 @@
   <template>
 
 <style is="custom-style">
-  #ti_widget_menubar {
+#ti_widget_menubar {
     top: 0px;
     width: 100%;
     margin: 0px;
@@ -60,7 +61,7 @@
 <ti-widget-readme background-color="#ffffff" elevation="5" title-text="README.md" id="readmeViewer" pin class="_TI_"></ti-widget-readme>
 <ti-core-stylesheets id="ti_core_stylesheets" class="_TI_"></ti-core-stylesheets>
 
-<ti-widget-menubar product-name="Application" id="ti_widget_menubar" layout class="_TI_ x-scope ti-widget-menubar-0" horizontal pin>
+<ti-widget-menubar product-name="Application" id="ti_widget_menubar" layout class="_TI_" horizontal pin>
     <ti-widget-filemenu id="ti_widget_filemenu" layout class="_TI_"></ti-widget-filemenu>
     <ti-widget-editmenu id="ti_widget_editmenu" layout class="_TI_"></ti-widget-editmenu>
     <ti-widget-helpmenu id="ti_widget_helpmenu" layout class="_TI_"></ti-widget-helpmenu>
@@ -68,14 +69,14 @@
 
 <ti-widget-container font-size="inherit" auto-scroll font-style="normal" font-weight="normal" text-align="left" text-decoration="none" visible id="viewport" pin class="_TI_ viewport" title>
     <ti-mdbu-settings id="ti_mdbu_settings" class="_TI_">
-        <ti-mdbu-accordion name="numberBox" label="NumberBox" id="ti_mdbu_accordion" class="_TI_ style-scope ti-mdbu-settings">
-            <ti-mdbu-textbox id="ti_mdbu_textbox" class="_TI_ style-scope ti-mdbu-settings"></ti-mdbu-textbox>
-            <ti-mdbu-numbox id="ti_mdbu_numbox" class="_TI_ style-scope ti-mdbu-settings"></ti-mdbu-numbox>
+        <ti-mdbu-accordion name="accordion" label="Accordion" id="ti_mdbu_accordion" class="_TI_ ti-mdbu-settings">
+            <ti-mdbu-textbox id="ti_mdbu_textbox" class="_TI_ ti-mdbu-settings"></ti-mdbu-textbox>
+            <ti-mdbu-numbox id="ti_mdbu_numbox" class="_TI_ ti-mdbu-settings"></ti-mdbu-numbox>
         </ti-mdbu-accordion>
     </ti-mdbu-settings>
 </ti-widget-container>
 
-<ti-widget-statusbar app-icon-style="color: white;display:inline-block;" icon-name="ti-core-icons:nolink" id="ti_widget_statusbar" class="_TI_ x-scope ti-widget-statusbar-0"></ti-widget-statusbar>
+<ti-widget-statusbar app-icon-style="color: white;display:inline-block;" icon-name="ti-core-icons:nolink" id="ti_widget_statusbar" class="_TI_"></ti-widget-statusbar>
 
 </template>
  <script>

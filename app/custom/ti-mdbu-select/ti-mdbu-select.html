@@ -2,7 +2,7 @@
 	<link rel="import" type="css" href="ti-mdbu-select.css">
 	<template>
 		<div class="ctrl-hdr">
-			{{label}}
+			{{objValue.label}}
 		</div>
 		<div class="ctrl-cnt">
 			<select id="select">
@@ -13,35 +13,22 @@
 		Polymer({
 			is: 'ti-mdbu-select',
 			properties: {
-				name: {
-					type: String,
-					value: 'select'
-				},
-				label: {
-					type: String,
-					value: 'Select'
-				},
-				items: {
-					type: String,
-					value: ''
-				},
-				selectedIndex: {
-					type: Number,
-					value: 0
+				objValue: {
+					type: Object
 				}
 			},
 			created: function(){
 				console.log("select is created");
 			},
-			ready: function() {
-				var options = this.items.split('|');
+			attached: function() {
+				var options = this.objValue.items;
 				var selectElement = this.$.select;
 				for(var index in options) {
 					var option = document.createElement("option");
-					option.text = options[index];
+					option.text = options[index].display;
 					selectElement.add(option);
 				}
-				selectElement.selectedIndex = this.selectedIndex;
+				selectElement.selectedIndex = this.objValue.selectedIndex;
 			}
 		})
 	</script>

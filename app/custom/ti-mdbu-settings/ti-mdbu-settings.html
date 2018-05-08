@@ -1,13 +1,33 @@
 <dom-module id="ti-mdbu-settings">
 		<link rel="import" type="css" href="ti-mdbu-settings.css">
 		<template>
-				<ti-mdbu-textbox obj-value="{{motorCtrl.i2cAddress}}" id="ti_mdbu_textbox" class="_TI_"></ti-mdbu-textbox>
-				<ti-mdbu-numbox obj-value="{{motorCtrl.pwmSwitchingFreq}}" id="ti_mdbu_numbox" class="_TI_"></ti-mdbu-numbox>
+			<div class="page-hdr">
+				{{displayData.pageHeader.label}}
+			</div>
+			<div class="page-body">
+				<div class="left-cntr">
+					<ti-mdbu-accordion id="ti_mdbu_accordion" name="numberBox" label="NumberBox" class="_TI_">
+						<ti-mdbu-textbox id="ti_mdbu_textbox" obj-value="{{motorCtrl.i2cAddress}}" class="_TI_"></ti-mdbu-textbox>
+						<ti-mdbu-numbox id="ti_mdbu_numbox" obj-value="{{motorCtrl.pwmSwitchingFreq}}" class="_TI_"></ti-mdbu-numbox>
+					</ti-mdbu-accordion>
+				</div>
+				<div class="rght-cntr">
+					
+				</div>
+			</div>
 		</template>
 		<script>
 			Polymer({
 				is: 'ti-mdbu-settings',
 				properties: {
+					displayData: {
+						type: Object,
+						value: {
+							pageHeader: {
+								label: 'High Level Page'
+							}
+						}
+					},
 					motorCtrl: {
 						type: Object,
 						value: {
@@ -18,7 +38,7 @@
 								ishex: true,
 								cached: '2',
 								min: 0,
-								max: 15,
+								max: 31,
 								dispValue: '0x10'
 							},
 							pwmSwitchingFreq: {

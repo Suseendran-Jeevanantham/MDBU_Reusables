@@ -2,6 +2,7 @@
 		<link rel="import" type="css" href="ti-mdbu-settings.css">
 		<template>
 				<ti-mdbu-textbox obj-value="{{motorCtrl.i2cAddress}}" id="ti_mdbu_textbox" class="_TI_"></ti-mdbu-textbox>
+				<ti-mdbu-numbox obj-value="{{motorCtrl.pwmSwitchingFreq}}" id="ti_mdbu_numbox" class="_TI_"></ti-mdbu-numbox>
 		</template>
 		<script>
 			Polymer({
@@ -12,13 +13,21 @@
 						value: {
 							i2cAddress: {
 								label: 'I2C Slave Address',
-									name: 'i2cAddress',
-									value: '2',
-									ishex: true,
-									cached: '2',
-									min: 0,
-									max: 15,
-									dispValue: '0x10'
+								name: 'i2cAddress',
+								value: '2',
+								ishex: true,
+								cached: '2',
+								min: 0,
+								max: 15,
+								dispValue: '0x10'
+							},
+							pwmSwitchingFreq: {
+								label: 'PWM Switching Frequency',
+								name: 'pwmSwitchingFreq',
+								value: 15,
+								cached: 15,
+								min: 0,
+								max: 100
 							}
 						}
 					}

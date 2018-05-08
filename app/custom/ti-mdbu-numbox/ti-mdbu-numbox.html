@@ -2,57 +2,39 @@
 	<link rel="import" type="css" href="ti-mdbu-numbox.css">
 	<template>
 		<div class="ctrl-hdr">
-			{{label}}
+			{{objValue.label}}
 		</div>
 		<div class="ctrl-cnt">
-			<input type="number" class="numbox" value="{{value::input}}">
+			<input type="number" class="numbox" value="{{objValue.value::input}}">
 		</div>
 	</template>
 	<script>
 		Polymer({
 			is: 'ti-mdbu-numbox',
 			properties: {
-				name: {
-					type: String,
-					value: 'numberBox'
-				},
-				label: {
-					type: String,
-					value: 'NumberBox'
-				},
-				cached: {
-					type: Number,
-					value: 0
-				},
-				min: {
-					type: Number,
-					value: 0
-				},
-				max: {
-					type: Number,
-					value: 10
-				},
-				value: {
-					type: Number,
-					value: 0,
-					observer: '_calculateValue'
+				objValue: {
+					type: Object
 				}
 			},
-			changeValue: function(newValue, oldValue) {
-				if(this.value == this.cached) {
+			observers: [
+				'_calculateValue(objValue.value)'
+			],
+			changeValue: function(newValue) {
+				if(this.objValue.value == this.objValue.cached) {
 					return;
 				}
-				if (this.value != '' && (this.value >= this.min) && (this.value <= this.max)) {
-					this.cached = this.value;
+				if (this.objValue.value != '' && (this.objValue.value >= this.objValue.min) && (this.objValue.value <= this.objValue.max)) {
+					this.objValue.cached = this.objValue.value;
 				}
 				else {
-					this.value = this.cached;
+					var value = this.objValue.cached;
+					this.set('objValue.value', value + '');
 				}
 			},
-			_calculateValue: function(newValue, oldValue) {
+			_calculateValue: function(newValue) {
 				this.cancelDebouncer('change');
 				this.debounce('change', function() {
-					this.changeValue(newValue, oldValue);
+					this.changeValue(newValue);
 				}, 750);
 			},
 			created: function(){

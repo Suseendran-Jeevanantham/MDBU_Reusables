@@ -1,0 +1,20 @@
+:host {
+  display: block;
+  left: 0 !important;
+  right: 0 !important;
+  position: static !important;
+  top: 0 !important;
+}
+.ctrl-hdr {
+  color: #98999B;
+  font-family: "Roboto-Medium";
+  font-size: 14px;
+  padding: 10px 0px;
+  width: 200px;
+}
+.ctrl-cnt {
+  align-items: center;
+  display: flex;
+  color: #63666A;
+  width: 200px;
+}

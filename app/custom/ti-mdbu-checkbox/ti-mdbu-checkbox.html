@@ -1,0 +1,24 @@
+<dom-module id="ti-mdbu-checkbox">
+	<link rel="import" type="css" href="ti-mdbu-checkbox.css">
+	<template>
+		<div class="ctrl-hdr">
+			{{objValue.label}}
+		</div>
+		<div class="ctrl-cnt">
+			<input type="checkbox" class="checkbox" checked="{{objValue.value::change}}">
+		</div>
+	</template>
+	<script>
+		Polymer({
+			is: 'ti-mdbu-checkbox',
+			properties: {
+				objValue: {
+					type: Object
+				}
+			},
+			created: function(){
+				console.log("CheckBox is created");
+			}		
+		})
+	</script>
+</dom-module>

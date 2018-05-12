@@ -34,17 +34,17 @@
 					value = this.convertHexToDecimal(newDispValue);
 					if (value == this.objValue.cached) {
 						var value = this.convertDecimalToHex(parseInt(value));
-						this.set('objValue.dispValue', value + '');
+						this.set('objValue.dispValue', value);
 						return;
 					}
 					if (!isNaN(value) && (value >= this.objValue.min) && (value <= this.objValue.max)) {
 						this.objValue.cached = this.objValue.value = value + '';
 						var value = this.convertDecimalToHex(parseInt(this.objValue.value));
-						this.set('objValue.dispValue', value + '');
+						this.set('objValue.dispValue', value);
 					}
 					else {
 						var value = this.convertDecimalToHex(parseInt(this.objValue.cached));
-						this.set('objValue.dispValue', value + '');
+						this.set('objValue.dispValue', value);
 					}
 				} else {
 					this.objValue.value = this.objValue.cached = newDispValue;
@@ -62,9 +62,9 @@
 			attached: function() {
 				if(this.objValue.ishex) {
 					var value = this.convertDecimalToHex(parseInt(this.objValue.value));
-					this.set('objValue.dispValue', value + '');
+					this.set('objValue.dispValue', value);
 				} else {
-					this.set('objValue.dispValue', this.objValue.value + '');
+					this.set('objValue.dispValue', this.objValue.value);
 				}
 			}		
 		})

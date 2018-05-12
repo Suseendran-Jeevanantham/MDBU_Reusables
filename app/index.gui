@@ -71,7 +71,7 @@
 
 <ti-widget-container font-size="inherit" auto-scroll font-style="normal" font-weight="normal" text-align="left" text-decoration="none" visible id="viewport" pin class="_TI_ viewport" title>
     <ti-mdbu-settings id="ti_mdbu_settings" class="_TI_">
-        <ti-mdbu-accordion name="accordion" label="Accordion" id="ti_mdbu_accordion" class="_TI_ style-scope ti-mdbu-settings">
+        <ti-mdbu-accordion id="ti_mdbu_accordion" class="_TI_ style-scope ti-mdbu-settings">
             <ti-mdbu-textbox id="ti_mdbu_textbox" class="_TI_ style-scope ti-mdbu-settings"></ti-mdbu-textbox>
             <ti-mdbu-numbox id="ti_mdbu_numbox" class="_TI_ style-scope ti-mdbu-settings"></ti-mdbu-numbox>
             <ti-mdbu-toggle id="ti_mdbu_toggle" class="_TI_ style-scope ti-mdbu-settings"></ti-mdbu-toggle>

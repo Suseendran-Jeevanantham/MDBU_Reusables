@@ -73,3 +73,11 @@
   position: relative;
   width: 70px;
 }
+
+.disabled * {
+  color: rgba(128, 128, 128, 0.6) !important;
+}
+
+.diasbled input {
+  cursor: not-allowed !important;
+}

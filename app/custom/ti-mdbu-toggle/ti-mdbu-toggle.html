@@ -1,15 +1,17 @@
 <dom-module id="ti-mdbu-toggle">
 	<link rel="import" type="css" href="ti-mdbu-toggle.css">
 	<template>
-		<div class="ctrl-hdr">
-			{{objValue.label}}
-		</div>
-		<div class="ctrl-cnt">
-			<div class="switch-status">
-				{{switchStatus}}
+		<div class$="{{getDisabledClass}}">
+			<div class="ctrl-hdr">
+				{{objValue.label}}
 			</div>
-			<div class$="{{getClass}}" on-tap="_toggleValue">
-				
+			<div class="ctrl-cnt">
+				<div class="switch-status">
+					{{switchStatus}}
+				</div>
+				<div class$="{{getStatusClass}}" on-tap="_toggleValue">
+					
+				</div>
 			</div>
 		</div>
 	</template>
@@ -23,9 +25,13 @@
 				switchStatus: {
 					type: String
 				},
-				getClass: {
+				getStatusClass: {
 					type: String,
-					computed: '_getClass(objValue.value)'
+					computed: '_getStatusClass(objValue.value)'
+				},
+				getDisabledClass: {
+					type: String,
+					computed: '_getDisabledClass(objValue.isDisabled)'
 				}
 			},
 			observers: [
@@ -34,12 +40,18 @@
 			_getSwitchStatus: function(newValue) {			
 				this.switchStatus = this.objValue.getSwitchStatus();
 			},
-			_getClass: function() {
+			_getStatusClass: function() {
 				if(this.objValue.value) {
 					return 'on-off-switch switch-active';
 				} else {
 					return 'on-off-switch';
 				}
+			},
+			_getDisabledClass: function() {
+				if(this.objValue.isDisabled) {
+					return 'disabled';
+				}
+				return '';
 			},
 			_toggleValue: function(){
 				var newValue = !this.objValue.value;

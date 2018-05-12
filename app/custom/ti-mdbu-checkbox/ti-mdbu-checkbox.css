@@ -18,3 +18,11 @@
   color: #63666A;
   width: 200px;
 }
+
+.disabled * {
+  color: rgba(128, 128, 128, 0.6) !important;
+}
+
+.diasbled input {
+  cursor: not-allowed !important;
+}

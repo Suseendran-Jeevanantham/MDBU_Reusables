@@ -4,7 +4,7 @@
 	"author": "GUI Composer",
 	"dependencies": {
 		"webcomponentsjs": "Polymer/webcomponentsjs",
-		"ti-widget-statusbar": "git@bitbucket.itg.ti.com/gc/ti-guicomposer-components.git"
+		"ti-widget-statusbar": "git@gitorious.design.ti.com:guicomposer-nw/ti-widget-statusbar.git"
 	},
 	"componentfolders": {
 		"ti-widget-statusbar": "ti-widget-statusbar"

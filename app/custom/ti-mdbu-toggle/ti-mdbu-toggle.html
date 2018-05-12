@@ -1,0 +1,57 @@
+<dom-module id="ti-mdbu-toggle">
+	<link rel="import" type="css" href="ti-mdbu-toggle.css">
+	<template>
+		<div class="ctrl-hdr">
+			{{objValue.label}}
+		</div>
+		<div class="ctrl-cnt">
+			<div class="switch-status">
+				{{switchStatus}}
+			</div>
+			<div class$="{{getClass}}" on-tap="_toggleValue">
+				
+			</div>
+		</div>
+	</template>
+	<script>
+		Polymer({
+			is: 'ti-mdbu-toggle',
+			properties: {
+				objValue: {
+					type: Object
+				},
+				switchStatus: {
+					type: String
+				},
+				getClass: {
+					type: String,
+					computed: '_getClass(objValue.value)'
+				}
+			},
+			observers: [
+				'_getSwitchStatus(objValue.value)'
+			],
+			_getSwitchStatus: function(newValue) {			
+				this.switchStatus = this.objValue.getSwitchStatus();
+			},
+			_getClass: function() {
+				if(this.objValue.value) {
+					return 'on-off-switch switch-active';
+				} else {
+					return 'on-off-switch';
+				}
+			},
+			_toggleValue: function(){
+				var newValue = !this.objValue.value;
+				this.set('objValue.value', newValue);				
+			},
+			created: function(){
+				var self = this;
+				console.log("toggle is created");
+			},
+			attached: function() {
+				
+			}
+		})
+	</script>
+</dom-module>

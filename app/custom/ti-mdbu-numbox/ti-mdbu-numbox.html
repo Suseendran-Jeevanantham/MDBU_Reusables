@@ -38,15 +38,14 @@
 					this.objValue.cached = this.value;
 				}
 				else {
-					var value = this.objValue.cached;
-					this.set('value', value);
+					this.value = this.objValue.cached;
 				}
 			},
 			_calculateValue: function(newValue) {
 				this.value = parseInt(newValue);
 				this.cancelDebouncer('change');
 				this.debounce('change', function() {
-					this.changeValue(newValue);
+					this.changeValue(this.value);
 				}, 750);
 			},
 			_getDisabledClass: function() {

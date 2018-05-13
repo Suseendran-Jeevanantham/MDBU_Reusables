@@ -44,18 +44,15 @@
 				if(this.objValue.ishex) {
 					value = this.convertHexToDecimal(newDispValue);
 					if (value == this.objValue.cached) {
-						var value = this.convertDecimalToHex(parseInt(value));
-						this.set('objValue.dispValue', value);
+						this.set('objValue.dispValue', this.convertDecimalToHex(parseInt(value)));
 						return;
 					}
 					if (!isNaN(value) && (value >= this.objValue.min) && (value <= this.objValue.max)) {
 						this.objValue.cached = this.value = value + '';
-						var value = this.convertDecimalToHex(parseInt(this.value));
-						this.set('objValue.dispValue', value);
+						this.set('objValue.dispValue', this.convertDecimalToHex(parseInt(this.value)));
 					}
 					else {
-						var value = this.convertDecimalToHex(parseInt(this.objValue.cached));
-						this.set('objValue.dispValue', value);
+						this.set('objValue.dispValue', this.convertDecimalToHex(parseInt(this.objValue.cached)));
 					}
 				} else {
 					this.value = this.objValue.cached = newDispValue;

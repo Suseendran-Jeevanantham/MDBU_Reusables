@@ -5,6 +5,7 @@
   position: static !important;
   top: 0 !important;
 }
+
 .ctrl-hdr {
   color: #98999B;
   font-family: "Roboto-Medium";
@@ -12,13 +13,23 @@
   padding: 10px 0px;
   width: 200px;
 }
+
 .ctrl-cnt {
   align-items: center;
   display: flex;
   color: #63666A;
   width: 200px;
 }
-.numbox {
+
+.disabled * {
+  color: rgba(128, 128, 128, 0.6) !important;
+}
+
+.disabled input {
+  cursor: not-allowed !important;
+}
+
+.textbox {
   background-color: transparent;
   border: none;
   border: 1px solid #e6e6e6;

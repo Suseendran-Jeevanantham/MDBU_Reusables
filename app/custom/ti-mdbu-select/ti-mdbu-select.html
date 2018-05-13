@@ -1,12 +1,14 @@
 <dom-module id="ti-mdbu-select">
 	<link rel="import" type="css" href="ti-mdbu-select.css">
 	<template>
-		<div class="ctrl-hdr">
-			{{objValue.label}}
-		</div>
-		<div class="ctrl-cnt">
-			<select id="select">
-			</select>
+		<div class$="{{getDisabledClass}}">
+			<div class="ctrl-hdr">
+				{{objValue.label}}
+			</div>
+			<div class="ctrl-cnt">
+				<select id="select">
+				</select>
+			</div>
 		</div>
 	</template>
 	<script>
@@ -15,6 +17,31 @@
 			properties: {
 				objValue: {
 					type: Object
+				},
+				getDisabledClass: {
+					type: String,
+					computed: '_getDisabledClass(objValue.isDisabled)'
+				}
+			},
+			observers: [
+				'_manipulateDisabled(objValue.isDisabled)'
+			],
+			_getDisabledClass: function() {
+				if(this.objValue.isDisabled) {
+					return 'disabled';
+				}
+				return '';
+			},
+			_manipulateDisabled: function() {
+				var inputElement = this.$.select;
+				if(!inputElement || !this.objValue || this.objValue.isDisabled == undefined || 
+							this.objValue.isDisabled == null) {
+					return;
+				}
+				if(this.objValue.isDisabled) {
+					inputElement.setAttribute('disabled', true);
+				} else {
+					inputElement.removeAttribute('disabled');
 				}
 			},
 			created: function(){

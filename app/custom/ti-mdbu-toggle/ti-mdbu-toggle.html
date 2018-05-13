@@ -27,7 +27,7 @@
 				},
 				getStatusClass: {
 					type: String,
-					computed: '_getStatusClass(objValue.value)'
+					computed: '_getStatusClass(objValue.value, objValue.isDisabled)'
 				},
 				getDisabledClass: {
 					type: String,
@@ -41,11 +41,14 @@
 				this.switchStatus = this.objValue.getSwitchStatus();
 			},
 			_getStatusClass: function() {
+				var classValue = 'on-off-switch';
 				if(this.objValue.value) {
-					return 'on-off-switch switch-active';
-				} else {
-					return 'on-off-switch';
+					classValue += ' switch-active';
 				}
+				if(this.objValue.isDisabled) {
+					classValue += ' switch-disable';
+				}
+				return classValue;
 			},
 			_getDisabledClass: function() {
 				if(this.objValue.isDisabled) {
@@ -54,6 +57,9 @@
 				return '';
 			},
 			_toggleValue: function(){
+				if(!this.objValue || this.objValue.isDisabled) {
+					return;
+				}
 				var newValue = !this.objValue.value;
 				this.set('objValue.value', newValue);				
 			},

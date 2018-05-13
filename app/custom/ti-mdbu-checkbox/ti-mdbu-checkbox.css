@@ -23,6 +23,6 @@
   color: rgba(128, 128, 128, 0.6) !important;
 }
 
-.diasbled input {
+.disabled input {
   cursor: not-allowed !important;
 }

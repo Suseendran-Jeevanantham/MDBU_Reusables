@@ -1,11 +1,13 @@
 <dom-module id="ti-mdbu-textbox">
 	<link rel="import" type="css" href="ti-mdbu-textbox.css">
 	<template>
-		<div class="ctrl-hdr">
-			{{objValue.label}}
-		</div>
-		<div class="ctrl-cnt">
-			<input type="text" class="numbox" value="{{objValue.dispValue::input}}">
+		<div class$="{{getDisabledClass}}">
+			<div class="ctrl-hdr">
+				{{objValue.label}}
+			</div>
+			<div class="ctrl-cnt">
+				<input type="text" id="textbox" class="textbox" value="{{objValue.dispValue::input}}">
+			</div>
 		</div>
 	</template>
 	<script>
@@ -14,10 +16,15 @@
 			properties: {
 				objValue: {
 					type: Object
+				},
+				getDisabledClass: {
+					type: String,
+					computed: '_getDisabledClass(objValue.isDisabled)'
 				}
 			},
 			observers: [
-				'_calculateValue(objValue.dispValue)'
+				'_calculateValue(objValue.dispValue)',
+				'_manipulateDisabled(objValue.isDisabled)'
 			],
 			convertHexToDecimal: function(hex) {
         return parseInt(hex, 16);
@@ -55,6 +62,24 @@
 				this.debounce('change', function() {
 					this.changeValue(newDispValue);
 				}, 750);
+			},
+			_getDisabledClass: function() {
+				if(this.objValue.isDisabled) {
+					return 'disabled';
+				}
+				return '';
+			},
+			_manipulateDisabled: function() {
+				var inputElement = this.$.textbox;
+				if(!inputElement || !this.objValue || this.objValue.isDisabled == undefined ||
+							this.objValue.isDisabled == null) {
+					return;
+				}
+				if(this.objValue.isDisabled) {
+					inputElement.setAttribute('disabled', true);
+				} else {
+					inputElement.removeAttribute('disabled');
+				}
 			},
 			created: function(){
 				console.log("Textbox is created");

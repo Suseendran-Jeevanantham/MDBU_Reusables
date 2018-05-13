@@ -11,6 +11,8 @@
 						<ti-mdbu-numbox id="ti_mdbu_numbox" obj-value="{{motorCtrl.pwmSwitchingFreq}}" class="_TI_"></ti-mdbu-numbox>
 						<ti-mdbu-toggle id="ti_mdbu_toggle" obj-value="{{motorCtrl.driverEnable}}" class="_TI_"></ti-mdbu-toggle>
 						<ti-mdbu-checkbox id="ti_mdbu_checkbox" obj-value="{{motorCtrl.driverEnable}}" class="_TI_"></ti-mdbu-checkbox>
+						<ti-mdbu-select id="ti_mdbu_select" obj-value="{{motorCtrl.mode}}" class="_TI_"></ti-mdbu-select>
+						<ti-mdbu-toggle id="ti_mdbu_toggle_1" obj-value="{{disableButton}}" class="_TI_"></ti-mdbu-toggle>
 					</ti-mdbu-accordion>
 				</div>
 				<div class="rght-cntr">
@@ -30,6 +32,18 @@
 							}
 						}
 					},
+					disableButton: {
+						type: Object,
+						value: {
+							label: 'Can Disable All',
+							name: 'disableAll',
+							value: true,
+							isDisabled: false,
+							getSwitchStatus: function() {
+								return this.value ? 'Enabled' : 'Disabled';
+							}
+						}
+					},
 					motorCtrl: {
 						type: Object,
 						value: {
@@ -41,11 +55,13 @@
 								cached: '2',
 								min: 0,
 								max: 31,
+								isDisabled: true,
 								dispValue: '0x10'
 							},
 							pwmSwitchingFreq: {
 								label: 'PWM Switching Frequency',
 								name: 'pwmSwitchingFreq',
+								isDisabled: true,
 								value: 15,
 								cached: 15,
 								min: 0,
@@ -54,6 +70,7 @@
 							mode: {
 								label: 'Mode',
 								name: 'mode',
+								isDisabled: true,
 								items: [{
 										display: '4-Pin Mode',
 										value: 0
@@ -85,8 +102,25 @@
 						}
 					}
 				},
+				observers: [
+					'_manipulateDisable(disableButton.value)'
+				],
+				_manipulateDisable: function() {
+					if(!this.motorCtrl) {
+						return;
+					}
+					
+					for(var index in this.motorCtrl) {
+						var component = 'motorCtrl';
+						component += '.' + index + '.isDisabled';
+						this.set(component, this.disableButton.value);
+					}
+				},
 				created: function(){
 					console.log("settings is created");
+				},
+				attached: function() {
+					this.self = this;
 				}		
 			})
 		</script>

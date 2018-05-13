@@ -38,8 +38,8 @@
 							label: 'Can Disable All',
 							name: 'disableAll',
 							isDisabled: false,
-							getSwitchStatus: function() {
-								return this.value ? 'Enabled' : 'Disabled';
+							getSwitchStatus: function(value) {
+								return value ? 'Enabled' : 'Disabled';
 							}
 						}
 					},

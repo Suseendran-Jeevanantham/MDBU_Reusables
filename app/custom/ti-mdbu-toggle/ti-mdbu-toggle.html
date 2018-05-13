@@ -27,7 +27,8 @@
 					notify: true
 				},
 				switchStatus: {
-					type: String
+					type: String,
+					computed: '_getSwitchStatus(value)'
 				},
 				getStatusClass: {
 					type: String,
@@ -38,11 +39,8 @@
 					computed: '_getDisabledClass(objValue.isDisabled)'
 				}
 			},
-			observers: [
-				'_getSwitchStatus(value)'
-			],
-			_getSwitchStatus: function(newValue) {			
-				this.switchStatus = this.objValue.getSwitchStatus(this.value);
+			_getSwitchStatus: function() {			
+				return this.objValue.getSwitchStatus(this.value);
 			},
 			_getStatusClass: function() {
 				var classValue = 'on-off-switch';

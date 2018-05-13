@@ -7,12 +7,12 @@
 			<div class="page-body">
 				<div class="left-cntr">
 					<ti-mdbu-accordion id="ti_mdbu_accordion" name="accordion" label="Accordion" class="_TI_">
-						<ti-mdbu-textbox id="ti_mdbu_textbox" obj-value="{{motorCtrl.i2cAddress}}" class="_TI_"></ti-mdbu-textbox>
-						<ti-mdbu-numbox id="ti_mdbu_numbox" obj-value="{{motorCtrl.pwmSwitchingFreq}}" class="_TI_"></ti-mdbu-numbox>
-						<ti-mdbu-toggle id="ti_mdbu_toggle" obj-value="{{motorCtrl.driverEnable}}" class="_TI_"></ti-mdbu-toggle>
-						<ti-mdbu-checkbox id="ti_mdbu_checkbox" obj-value="{{motorCtrl.driverEnable}}" class="_TI_"></ti-mdbu-checkbox>
-						<ti-mdbu-select id="ti_mdbu_select" obj-value="{{motorCtrl.mode}}" class="_TI_"></ti-mdbu-select>
-						<ti-mdbu-toggle id="ti_mdbu_toggle_1" obj-value="{{disableButton}}" class="_TI_"></ti-mdbu-toggle>
+						<ti-mdbu-textbox id="ti_mdbu_textbox" obj-value="{{motorCtrl.i2cAddress}}" value="{{i2cAddressValue}}" class="_TI_"></ti-mdbu-textbox>
+						<ti-mdbu-numbox id="ti_mdbu_numbox" obj-value="{{motorCtrl.pwmSwitchingFreq}}" value="{{pwmSwitchingFreqValue}}" class="_TI_"></ti-mdbu-numbox>
+						<ti-mdbu-toggle id="ti_mdbu_toggle" obj-value="{{motorCtrl.driverEnable}}" value="{{driverEnableValue}}" class="_TI_"></ti-mdbu-toggle>
+						<ti-mdbu-checkbox id="ti_mdbu_checkbox" obj-value="{{motorCtrl.driverEnable}}" value="{{driverEnableValue}}" class="_TI_"></ti-mdbu-checkbox>
+						<ti-mdbu-select id="ti_mdbu_select" obj-value="{{motorCtrl.mode}}" value="{{modeValue}}" class="_TI_"></ti-mdbu-select>
+						<ti-mdbu-toggle id="ti_mdbu_toggle_1" obj-value="{{disableButton}}" value="{{disableButtonValue}}" class="_TI_"></ti-mdbu-toggle>
 					</ti-mdbu-accordion>
 				</div>
 				<div class="rght-cntr">
@@ -37,12 +37,15 @@
 						value: {
 							label: 'Can Disable All',
 							name: 'disableAll',
-							value: true,
 							isDisabled: false,
 							getSwitchStatus: function() {
 								return this.value ? 'Enabled' : 'Disabled';
 							}
 						}
+					},
+					disableButtonValue: {
+						type: Boolean,
+						value: true
 					},
 					motorCtrl: {
 						type: Object,
@@ -50,7 +53,6 @@
 							i2cAddress: {
 								label: 'I2C Slave Address',
 								name: 'i2cAddress',
-								value: '2',
 								ishex: true,
 								cached: '2',
 								min: 0,
@@ -62,7 +64,6 @@
 								label: 'PWM Switching Frequency',
 								name: 'pwmSwitchingFreq',
 								isDisabled: true,
-								value: 15,
 								cached: 15,
 								min: 0,
 								max: 100
@@ -87,23 +88,37 @@
 										display: 'Independent Mode',
 										value: 3
 									}
-								],
-								selectedIndex: 1
+								]
 							},
 							driverEnable: {
 								label: 'Driver Enable',
 								name: 'driverEnable',
-								value: false,
 								isDisabled: true,
-								getSwitchStatus: function() {
-									return this.value ? 'Enabled' : 'Disabled';
+								getSwitchStatus: function(value) {
+									return value ? 'Enabled' : 'Disabled';
 								}
 							}
 						}
+					},
+					driverEnableValue: {
+						type: Boolean,
+						value: false
+					},
+					modeValue: {
+						type: Number,
+						value: 2
+					},
+					pwmSwitchingFreqValue: {
+						type: Number,
+						value: 15
+					},
+					i2cAddressValue: {
+						type: String,
+						value: '2'
 					}
 				},
 				observers: [
-					'_manipulateDisable(disableButton.value)'
+					'_manipulateDisable(disableButtonValue)'
 				],
 				_manipulateDisable: function() {
 					if(!this.motorCtrl) {
@@ -113,7 +128,7 @@
 					for(var index in this.motorCtrl) {
 						var component = 'motorCtrl';
 						component += '.' + index + '.isDisabled';
-						this.set(component, this.disableButton.value);
+						this.set(component, this.disableButtonValue);
 					}
 				},
 				created: function(){

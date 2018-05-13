@@ -17,6 +17,10 @@
 				objValue: {
 					type: Object
 				},
+				value: {
+					type: String,
+					notify: true
+				},
 				getDisabledClass: {
 					type: String,
 					computed: '_getDisabledClass(objValue.isDisabled)'
@@ -45,8 +49,8 @@
 						return;
 					}
 					if (!isNaN(value) && (value >= this.objValue.min) && (value <= this.objValue.max)) {
-						this.objValue.cached = this.objValue.value = value + '';
-						var value = this.convertDecimalToHex(parseInt(this.objValue.value));
+						this.objValue.cached = this.value = value + '';
+						var value = this.convertDecimalToHex(parseInt(this.value));
 						this.set('objValue.dispValue', value);
 					}
 					else {
@@ -54,7 +58,7 @@
 						this.set('objValue.dispValue', value);
 					}
 				} else {
-					this.objValue.value = this.objValue.cached = newDispValue;
+					this.value = this.objValue.cached = newDispValue;
 				}
 			},
 			_calculateValue: function(newDispValue) {
@@ -86,10 +90,10 @@
 			},
 			attached: function() {
 				if(this.objValue.ishex) {
-					var value = this.convertDecimalToHex(parseInt(this.objValue.value));
+					var value = this.convertDecimalToHex(parseInt(this.value));
 					this.set('objValue.dispValue', value);
 				} else {
-					this.set('objValue.dispValue', this.objValue.value);
+					this.set('objValue.dispValue', this.value);
 				}
 			}		
 		})

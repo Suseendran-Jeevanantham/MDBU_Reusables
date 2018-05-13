@@ -6,7 +6,7 @@
 				{{objValue.label}}
 			</div>
 			<div class="ctrl-cnt">
-				<input type="checkbox" id="checkbox" class="checkbox" checked="{{objValue.value::change}}">
+				<input type="checkbox" id="checkbox" class="checkbox" checked="{{value::change}}">
 			</div>
 		</div>
 	</template>
@@ -16,6 +16,10 @@
 			properties: {
 				objValue: {
 					type: Object
+				},
+				value: {
+					type: Boolean,
+					notify: true
 				},
 				getDisabledClass: {
 					type: String,

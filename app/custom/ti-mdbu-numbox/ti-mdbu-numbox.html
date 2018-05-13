@@ -6,7 +6,7 @@
 				{{objValue.label}}
 			</div>
 			<div class="ctrl-cnt">
-				<input type="number" id="number" class="numbox" value="{{objValue.value::input}}">
+				<input type="number" id="number" class="numbox" value="{{value::input}}">
 			</div>
 		</div>
 	</template>
@@ -17,28 +17,33 @@
 				objValue: {
 					type: Object
 				},
+				value: {
+					type: Number,
+					notify: true
+				},
 				getDisabledClass: {
 					type: String,
 					computed: '_getDisabledClass(objValue.isDisabled)'
 				}
 			},
 			observers: [
-				'_calculateValue(objValue.value)',
+				'_calculateValue(value)',
 				'_manipulateDisabled(objValue.isDisabled)'
 			],
 			changeValue: function(newValue) {
-				if(this.objValue.value == this.objValue.cached) {
+				if(this.value == this.objValue.cached) {
 					return;
 				}
-				if (this.objValue.value != '' && (this.objValue.value >= this.objValue.min) && (this.objValue.value <= this.objValue.max)) {
-					this.objValue.cached = this.objValue.value;
+				if (this.value != '' && (this.value >= this.objValue.min) && (this.value <= this.objValue.max)) {
+					this.objValue.cached = this.value;
 				}
 				else {
 					var value = this.objValue.cached;
-					this.set('objValue.value', value);
+					this.set('value', value);
 				}
 			},
 			_calculateValue: function(newValue) {
+				this.value = parseInt(newValue);
 				this.cancelDebouncer('change');
 				this.debounce('change', function() {
 					this.changeValue(newValue);

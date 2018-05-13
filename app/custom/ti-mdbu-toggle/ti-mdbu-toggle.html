@@ -22,12 +22,16 @@
 				objValue: {
 					type: Object
 				},
+				value: {
+					type: Boolean,
+					notify: true
+				},
 				switchStatus: {
 					type: String
 				},
 				getStatusClass: {
 					type: String,
-					computed: '_getStatusClass(objValue.value, objValue.isDisabled)'
+					computed: '_getStatusClass(value, objValue.isDisabled)'
 				},
 				getDisabledClass: {
 					type: String,
@@ -35,14 +39,14 @@
 				}
 			},
 			observers: [
-				'_getSwitchStatus(objValue.value)'
+				'_getSwitchStatus(value)'
 			],
 			_getSwitchStatus: function(newValue) {			
-				this.switchStatus = this.objValue.getSwitchStatus();
+				this.switchStatus = this.objValue.getSwitchStatus(this.value);
 			},
 			_getStatusClass: function() {
 				var classValue = 'on-off-switch';
-				if(this.objValue.value) {
+				if(this.value) {
 					classValue += ' switch-active';
 				}
 				if(this.objValue.isDisabled) {
@@ -60,8 +64,7 @@
 				if(!this.objValue || this.objValue.isDisabled) {
 					return;
 				}
-				var newValue = !this.objValue.value;
-				this.set('objValue.value', newValue);				
+				this.value = !this.value;		
 			},
 			created: function(){
 				var self = this;

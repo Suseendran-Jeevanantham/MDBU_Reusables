@@ -6,7 +6,7 @@
 				{{objValue.label}}
 			</div>
 			<div class="ctrl-cnt">
-				<select id="select">
+				<select id="select" value="{{value::change}}">
 				</select>
 			</div>
 		</div>
@@ -18,13 +18,18 @@
 				objValue: {
 					type: Object
 				},
+				value: {
+					type: Number,
+					notify: true
+				},
 				getDisabledClass: {
 					type: String,
 					computed: '_getDisabledClass(objValue.isDisabled)'
 				}
 			},
 			observers: [
-				'_manipulateDisabled(objValue.isDisabled)'
+				'_manipulateDisabled(objValue.isDisabled)',
+				'_updateValue(value)'
 			],
 			_getDisabledClass: function() {
 				if(this.objValue.isDisabled) {
@@ -44,6 +49,9 @@
 					inputElement.removeAttribute('disabled');
 				}
 			},
+			_updateValue: function() {
+				this.value = parseInt(this.value);
+			},
 			created: function(){
 				console.log("select is created");
 			},
@@ -53,9 +61,10 @@
 				for(var index in options) {
 					var option = document.createElement("option");
 					option.text = options[index].display;
+					option.value = options[index].value;
 					selectElement.add(option);
 				}
-				selectElement.selectedIndex = this.objValue.selectedIndex;
+				selectElement.value = this.value;
 			}
 		})
 	</script>

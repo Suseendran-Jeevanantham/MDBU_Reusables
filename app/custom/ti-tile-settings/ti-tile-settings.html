@@ -1,19 +1,19 @@
-<dom-module id="ti-mdbu-settings">
-		<link rel="import" type="css" href="ti-mdbu-settings.css">
+<dom-module id="ti-tile-settings">
+		<link rel="import" type="css" href="ti-tile-settings.css">
 		<template>
 			<div class="page-hdr">
 				{{displayData.pageHeader.label}}
 			</div>
 			<div class="page-body">
 				<div class="left-cntr">
-					<ti-mdbu-accordion id="ti_mdbu_accordion" name="accordion" label="Accordion" class="_TI_">
-						<ti-mdbu-textbox id="ti_mdbu_textbox" obj-value="{{motorCtrl.i2cAddress}}" value="{{i2cAddressValue}}" class="_TI_"></ti-mdbu-textbox>
-						<ti-mdbu-numbox id="ti_mdbu_numbox" obj-value="{{motorCtrl.pwmSwitchingFreq}}" value="{{pwmSwitchingFreqValue}}" class="_TI_"></ti-mdbu-numbox>
-						<ti-mdbu-toggle id="ti_mdbu_toggle" obj-value="{{motorCtrl.driverEnable}}" value="{{driverEnableValue}}" class="_TI_"></ti-mdbu-toggle>
-						<ti-mdbu-checkbox id="ti_mdbu_checkbox" obj-value="{{motorCtrl.driverEnable}}" value="{{driverEnableValue}}" class="_TI_"></ti-mdbu-checkbox>
-						<ti-mdbu-select id="ti_mdbu_select" obj-value="{{motorCtrl.mode}}" value="{{modeValue}}" class="_TI_"></ti-mdbu-select>
-						<ti-mdbu-toggle id="ti_mdbu_toggle_1" obj-value="{{disableButton}}" value="{{disableButtonValue}}" class="_TI_"></ti-mdbu-toggle>
-					</ti-mdbu-accordion>
+					<ti-tile-accordion id="ti_tile_accordion" name="accordion" label="Accordion" class="_TI_">
+						<ti-widget-custom-textbox id="ti_widget-custom_textbox" obj-value="{{motorCtrl.i2cAddress}}" value="{{i2cAddressValue}}" class="_TI_"></ti-widget-custom-textbox>
+						<ti-widget-custom-numbox id="ti_widget-custom_numbox" obj-value="{{motorCtrl.pwmSwitchingFreq}}" value="{{pwmSwitchingFreqValue}}" class="_TI_"></ti-widget-custom-numbox>
+						<ti-widget-custom-toggle id="ti_widget-custom_toggle" obj-value="{{motorCtrl.driverEnable}}" value="{{driverEnableValue}}" class="_TI_"></ti-widget-custom-toggle>
+						<ti-widget-custom-checkbox id="ti_widget-custom_checkbox" obj-value="{{motorCtrl.driverEnable}}" value="{{driverEnableValue}}" class="_TI_"></ti-widget-custom-checkbox>
+						<ti-widget-custom-select id="ti_widget-custom_select" obj-value="{{motorCtrl.mode}}" value="{{modeValue}}" class="_TI_"></ti-widget-custom-select>
+						<ti-widget-custom-toggle id="ti_widget-custom_toggle_1" obj-value="{{disableButton}}" value="{{disableButtonValue}}" class="_TI_"></ti-widget-custom-toggle>
+					</ti-tile-accordion>
 				</div>
 				<div class="rght-cntr">
 					
@@ -22,7 +22,7 @@
 		</template>
 		<script>
 			Polymer({
-				is: 'ti-mdbu-settings',
+				is: 'ti-tile-settings',
 				properties: {
 					displayData: {
 						type: Object,

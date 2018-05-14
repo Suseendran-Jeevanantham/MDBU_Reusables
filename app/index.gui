@@ -5,13 +5,13 @@
 <link rel="import" href="../ti-widget-menubar/ti-widget-editmenu.html">
 <link rel="import" href="../ti-widget-menubar/ti-widget-helpmenu.html">
 <link rel="import" href="../ti-widget-common/ti-widget-container.html">
-<link rel="import" href="app/custom/ti-mdbu-accordion/ti-mdbu-accordion.html">
-<link rel="import" href="app/custom/ti-mdbu-numbox/ti-mdbu-numbox.html">
-<link rel="import" href="app/custom/ti-mdbu-select/ti-mdbu-select.html">
-<link rel="import" href="app/custom/ti-mdbu-settings/ti-mdbu-settings.html">
-<link rel="import" href="app/custom/ti-mdbu-textbox/ti-mdbu-textbox.html">
-<link rel="import" href="app/custom/ti-mdbu-toggle/ti-mdbu-toggle.html">
-<link rel="import" href="app/custom/ti-mdbu-checkbox/ti-mdbu-checkbox.html">
+<link rel="import" href="app/custom/ti-tile-accordion/ti-tile-accordion.html">
+<link rel="import" href="app/custom/ti-widget-custom-numbox/ti-widget-custom-numbox.html">
+<link rel="import" href="app/custom/ti-widget-custom-select/ti-widget-custom-select.html">
+<link rel="import" href="app/custom/ti-tile-settings/ti-tile-settings.html">
+<link rel="import" href="app/custom/ti-widget-custom-textbox/ti-widget-custom-textbox.html">
+<link rel="import" href="app/custom/ti-widget-custom-toggle/ti-widget-custom-toggle.html">
+<link rel="import" href="app/custom/ti-widget-custom-checkbox/ti-widget-custom-checkbox.html">
 <link rel="import" href="../ti-widget-statusbar/ti-widget-statusbar.html">
 
 <dom-module name="my-element">
@@ -43,17 +43,7 @@
   #ti_widget_statusbar {
     position: static;
   }
-  #ti_mdbu_settings {
-    left: 0px;
-    top: -41px;
-    position: absolute;
-  }
-  #ti_mdbu_textbox {
-    left: 0px;
-    top: -41px;
-    position: absolute;
-  }
-  #ti_mdbu_numbox {
+  #ti_tile_settings {
     left: 0px;
     top: -41px;
     position: absolute;
@@ -70,16 +60,16 @@
 </ti-widget-menubar>
 
 <ti-widget-container font-size="inherit" auto-scroll font-style="normal" font-weight="normal" text-align="left" text-decoration="none" visible id="viewport" pin class="_TI_ viewport" title>
-    <ti-mdbu-settings id="ti_mdbu_settings" class="_TI_">
-        <ti-mdbu-accordion name="accordion" label="Accordion" id="ti_mdbu_accordion" class="_TI_ style-scope ti-mdbu-settings">
-            <ti-mdbu-textbox id="ti_mdbu_textbox" class="_TI_ style-scope ti-mdbu-settings"></ti-mdbu-textbox>
-            <ti-mdbu-numbox id="ti_mdbu_numbox" class="_TI_ style-scope ti-mdbu-settings"></ti-mdbu-numbox>
-            <ti-mdbu-toggle id="ti_mdbu_toggle" class="_TI_ style-scope ti-mdbu-settings"></ti-mdbu-toggle>
-            <ti-mdbu-checkbox id="ti_mdbu_checkbox" class="_TI_ style-scope ti-mdbu-settings"></ti-mdbu-checkbox>
-            <ti-mdbu-select id="ti_mdbu_select" class="_TI_ style-scope ti-mdbu-settings"></ti-mdbu-select>
-            <ti-mdbu-toggle id="ti_mdbu_toggle_1" class="_TI_ style-scope ti-mdbu-settings"></ti-mdbu-toggle>
-        </ti-mdbu-accordion>
-    </ti-mdbu-settings>
+    <ti-tile-settings id="ti_tile_settings" class="_TI_">
+        <ti-tile-accordion name="accordion" label="Accordion" id="ti_tile_accordion" class="_TI_ style-scope ti-tile-settings">
+            <ti-widget-custom-textbox id="ti_widget-custom_textbox" class="_TI_ style-scope ti-tile-settings"></ti-widget-custom-textbox>
+            <ti-widget-custom-numbox id="ti_widget-custom_numbox" class="_TI_ style-scope ti-tile-settings"></ti-widget-custom-numbox>
+            <ti-widget-custom-toggle id="ti_widget-custom_toggle" class="_TI_ style-scope ti-tile-settings"></ti-widget-custom-toggle>
+            <ti-widget-custom-checkbox id="ti_widget-custom_checkbox" class="_TI_ style-scope ti-tile-settings"></ti-widget-custom-checkbox>
+            <ti-widget-custom-select id="ti_widget-custom_select" class="_TI_ style-scope ti-tile-settings"></ti-widget-custom-select>
+            <ti-widget-custom-toggle id="ti_widget-custom_toggle_1" class="_TI_ style-scope ti-tile-settings"></ti-widget-custom-toggle>
+        </ti-tile-accordion>
+    </ti-tile-settings>
 </ti-widget-container>
 
 <ti-widget-statusbar app-icon-style="color: white;display:inline-block;" icon-name="ti-core-icons:nolink" id="ti_widget_statusbar" class="_TI_ x-scope ti-widget-statusbar-0"></ti-widget-statusbar>

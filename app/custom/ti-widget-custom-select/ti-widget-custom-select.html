@@ -1,18 +1,19 @@
-<dom-module id="ti-mdbu-numbox">
-	<link rel="import" type="css" href="ti-mdbu-numbox.css">
+<dom-module id="ti-widget-custom-select">
+	<link rel="import" type="css" href="ti-widget-custom-select.css">
 	<template>
 		<div class$="{{getDisabledClass}}">
 			<div class="ctrl-hdr">
 				{{objValue.label}}
 			</div>
 			<div class="ctrl-cnt">
-				<input type="number" id="number" class="numbox" value="{{value::input}}">
+				<select id="select" value="{{value::change}}">
+				</select>
 			</div>
 		</div>
 	</template>
 	<script>
 		Polymer({
-			is: 'ti-mdbu-numbox',
+			is: 'ti-widget-custom-select',
 			properties: {
 				objValue: {
 					type: Object
@@ -27,27 +28,9 @@
 				}
 			},
 			observers: [
-				'_calculateValue(value)',
-				'_manipulateDisabled(objValue.isDisabled)'
+				'_manipulateDisabled(objValue.isDisabled)',
+				'_updateValue(value)'
 			],
-			changeValue: function(newValue) {
-				if(this.value == this.objValue.cached) {
-					return;
-				}
-				if (this.value != '' && (this.value >= this.objValue.min) && (this.value <= this.objValue.max)) {
-					this.objValue.cached = this.value;
-				}
-				else {
-					this.value = this.objValue.cached;
-				}
-			},
-			_calculateValue: function(newValue) {
-				this.value = parseInt(newValue);
-				this.cancelDebouncer('change');
-				this.debounce('change', function() {
-					this.changeValue(this.value);
-				}, 750);
-			},
 			_getDisabledClass: function() {
 				if(this.objValue.isDisabled) {
 					return 'disabled';
@@ -55,7 +38,7 @@
 				return '';
 			},
 			_manipulateDisabled: function() {
-				var inputElement = this.$.number;
+				var inputElement = this.$.select;
 				if(!inputElement || !this.objValue || this.objValue.isDisabled == undefined || 
 							this.objValue.isDisabled == null) {
 					return;
@@ -66,9 +49,23 @@
 					inputElement.removeAttribute('disabled');
 				}
 			},
+			_updateValue: function() {
+				this.value = parseInt(this.value);
+			},
 			created: function(){
-				console.log("Numberbox is created");
-			}		
+				console.log("select is created");
+			},
+			attached: function() {
+				var options = this.objValue.items;
+				var selectElement = this.$.select;
+				for(var index in options) {
+					var option = document.createElement("option");
+					option.text = options[index].display;
+					option.value = options[index].value;
+					selectElement.add(option);
+				}
+				selectElement.value = this.value;
+			}
 		})
 	</script>
 </dom-module>
